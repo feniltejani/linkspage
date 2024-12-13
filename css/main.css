@@ -1,0 +1,1153 @@
+/* Add these at the top of your existing CSS */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+    background: rgba(6, 12, 33, 0.7);
+    backdrop-filter: blur(8px);
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 800px;
+    border-radius: 20px;
+}
+
+.link {
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+:root {
+    --bg-color: rgba(6, 12, 33, 0.7);
+    --text-color: #ffffff;
+    --sphere-color: #6a5acd;
+}
+
+[data-theme="light"] {
+    --bg-color: rgba(255, 255, 255, 0.7);
+    --text-color: #000000;
+    --sphere-color: #a491ff;
+}
+
+/* Update existing styles */
+main {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--text-color);
+}
+
+.sun-icon {
+    display: none;
+}
+
+[data-theme="light"] .sun-icon {
+    display: block;
+}
+
+[data-theme="light"] .moon-icon {
+    display: none;
+}
+
+/* Update link styles for better contrast in light mode */
+.link {
+    color: var(--text-color);
+}
+
+[data-theme="light"] .link {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    padding: 0 24px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.nav-logo img {
+    height: 32px;
+    width: 32px;
+    border-radius: 8px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.nav-link:hover {
+    opacity: 1;
+}
+
+.nav-link.active {
+    opacity: 1;
+    font-weight: 500;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.contact-btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: var(--text-color);
+    color: var(--bg-color);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact-btn:hover {
+    transform: translateY(-1px);
+}
+
+.contact-btn::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url('../images/envelope-solid.svg') no-repeat center;
+    background-size: contain;
+    filter: var(--bg-color-filter);
+}
+
+/* Update theme toggle position */
+.theme-toggle {
+    position: static; /* Override the fixed position */
+    margin: 0;
+}
+
+/* Update main container margin to account for navbar */
+main {
+    margin-top: calc(64px + 2rem);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .navbar {
+        padding: 0 16px;
+    }
+    
+    .nav-logo span {
+        display: none;
+    }
+}
+
+/* Update light theme styles */
+[data-theme="light"] .navbar {
+    background: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .contact-btn {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Add these styles */
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+#bg {
+    z-index: -1;
+    opacity: 0.7; /* Adjust the blend with the gradient background */
+}
+
+/* Update the main container background */
+main {
+    background: rgba(6, 12, 33, 0.5); /* More transparent to show background */
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Update navbar background */
+.navbar {
+    background: rgba(6, 12, 33, 0.3);
+    backdrop-filter: blur(16px);
+}
+
+[data-theme="light"] #background {
+    filter: hue-rotate(180deg) brightness(1.2);
+}
+
+[data-theme="light"] .navbar {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Profile section styles */
+.profile-section {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.profile-pic {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 3px solid var(--text-color);
+}
+
+.profile-section h1 {
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+}
+
+.bio {
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Link styles update */
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.link:hover {
+    transform: translateY(-2px);
+}
+
+.link img {
+    width: 24px;
+    height: 24px;
+    margin-right: 1rem;
+}
+
+.link span {
+    flex: 1;
+    font-weight: 500;
+}
+
+.linkIcon {
+    width: 16px !important;
+    height: 16px !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    opacity: 0.5;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    color: var(--text-color);
+    opacity: 0.7;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+footer a:hover {
+    opacity: 1;
+}
+
+/* Dark/Light theme adjustments */
+[data-theme="light"] .link {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] footer {
+    border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+.leetcode-stats {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.leetcode-stats h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+[data-theme="light"] .leetcode-stats {
+    border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Update stats grid for better spacing with 4 items */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+    padding: 0 1rem;
+}
+
+/* Update responsive styles */
+@media (max-width: 768px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+/* Dev Stats Section */
+.dev-stats {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dev-stats h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.stats-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1rem;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+}
+
+.stats-card iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+}
+
+/* Light theme adjustments */
+[data-theme="light"] .dev-stats {
+    border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .stats-card {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .stats-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-card iframe {
+        height: 160px;
+    }
+}
+
+/* LinkedIn Card Styles */
+.linkedin-card {
+    padding: 1.5rem;
+}
+
+.linkedin-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.linkedin-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 3px solid var(--text-color);
+}
+
+.linkedin-info {
+    text-align: center;
+}
+
+.linkedin-info h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+
+.linkedin-title {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin: 0;
+    margin-bottom: 0.25rem;
+}
+
+.linkedin-location {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin: 0;
+}
+
+.linkedin-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+}
+
+.linkedin-stat {
+    text-align: center;
+}
+
+.linkedin-view-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #0077b5;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: transform 0.2s ease;
+}
+
+.linkedin-view-profile:hover {
+    transform: translateY(-2px);
+}
+
+.linkedin-icon {
+    width: 16px;
+    height: 16px;
+}
+
+[data-theme="light"] .linkedin-stats {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .linkedin-stats {
+        gap: 1rem;
+    }
+}
+
+/* Floating Shapes Animation */
+.floating-shapes {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.shape {
+    position: absolute;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    animation: float 20s infinite;
+}
+
+.shape-1 {
+    width: 100px;
+    height: 100px;
+    top: 20%;
+    left: 10%;
+    animation-delay: -2s;
+}
+
+.shape-2 {
+    width: 150px;
+    height: 150px;
+    top: 60%;
+    right: 15%;
+    animation-delay: -5s;
+}
+
+.shape-3 {
+    width: 80px;
+    height: 80px;
+    top: 40%;
+    right: 30%;
+    animation-delay: -8s;
+}
+
+.shape-4 {
+    width: 120px;
+    height: 120px;
+    top: 80%;
+    left: 25%;
+    animation-delay: -12s;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(15px, 15px) rotate(90deg);
+    }
+    50% {
+        transform: translate(0, 30px) rotate(180deg);
+    }
+    75% {
+        transform: translate(-15px, 15px) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+/* Enhanced Card Animations */
+.stats-card {
+    transform-origin: center;
+    animation: cardPulse 4s infinite;
+}
+
+@keyframes cardPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+/* Hover Effects */
+.stats-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.profile-pic {
+    transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Enhanced Stats Animation */
+.stat-value {
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-value::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Light Theme Adjustments */
+[data-theme="light"] .shape {
+    background: linear-gradient(45deg, rgba(0,0,0,0.05), rgba(0,0,0,0.02));
+}
+
+/* GUI Styles */
+.lil-gui {
+    --background-color: var(--bg-color) !important;
+    --text-color: var(--text-color) !important;
+    --title-background-color: rgba(0,0,0,0.1) !important;
+    --widget-color: var(--text-color) !important;
+    --hover-color: var(--text-color) !important;
+    --focus-color: var(--text-color) !important;
+}
+
+.lil-gui.root {
+    position: fixed;
+    top: 80px;
+    right: 16px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+}
+
+/* Add profile animation styles */
+.profile-container {
+  perspective: 1000px;
+  width: 300px;
+  height: 300px;
+  margin: 2rem auto;
+}
+
+.profile-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: rotate 15s infinite linear;
+}
+
+.profile-side {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-front {
+  transform: rotateY(0deg);
+}
+
+.profile-back {
+  transform: rotateY(180deg);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Add hover pause effect */
+.profile-container:hover .profile-card {
+  animation-play-state: paused;
+} 
+
+/* Star animation styles */
+.star-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: #fff;
+    opacity: 0.8;
+    animation: moveDown linear infinite;
+}
+
+@keyframes moveDown {
+    0% {
+        transform: translateY(-100vh);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.4;
+    }
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none;
+    padding: 15px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    margin: 0;
+}
+
+.hamburger-box {
+    width: 30px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: -2px;
+}
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+    width: 30px;
+    height: 3px;
+    background-color: var(--text-color);
+    border-radius: 4px;
+    position: absolute;
+    transition: transform 0.15s ease;
+}
+
+.hamburger-inner::before, .hamburger-inner::after {
+    content: "";
+    display: block;
+}
+
+.hamburger-inner::before {
+    top: -10px;
+}
+
+.hamburger-inner::after {
+    bottom: -10px;
+}
+
+/* Hamburger Animation */
+.hamburger.active .hamburger-inner {
+    transform: rotate(45deg);
+}
+
+.hamburger.active .hamburger-inner::before {
+    top: 0;
+    opacity: 0;
+}
+
+.hamburger.active .hamburger-inner::after {
+    bottom: 0;
+    transform: rotate(-90deg);
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+    .hamburger {
+        display: inline-block;
+    }
+
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--bg-color);
+        backdrop-filter: blur(12px);
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 0.5rem 1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    [data-theme="light"] .nav-links {
+        background: rgba(255, 255, 255, 0.9);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Profile Stats Container */
+.profile-stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin: 2rem auto;
+    max-width: 1200px;
+    padding: 0 1rem;
+}
+
+.profile-stats {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-stats:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.stats-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stats-header img {
+    width: 24px;
+    height: 24px;
+    filter: var(--icon-filter);
+}
+
+.stats-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+/* Theme-specific styles */
+[data-theme="light"] .profile-stats {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .stats-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-stats {
+        min-width: 100%;
+    }
+}
+
+/* LinkedIn Profile Link */
+.linkedin-profile-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #0077b5;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.linkedin-profile-link:hover {
+    transform: translateY(-2px);
+    background: #006399;
+}
+
+.linkedin-profile-link .linkIcon {
+    width: 16px;
+    height: 16px;
+    opacity: 1;
+}
+
+/* Update stat items for text content */
+.linkedin-stats .stat-item .stat-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.linkedin-stats .stat-item .stat-label {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+/* Enhanced LinkedIn Card Styles */
+.linkedin-stats {
+    padding: 2rem !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+.linkedin-profile-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+}
+
+.linkedin-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.linkedin-avatar:hover {
+    transform: scale(1.05);
+    border-color: #0077b5;
+}
+
+.linkedin-details {
+    flex: 1;
+}
+
+.linkedin-details h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.linkedin-headline {
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.linkedin-stats .stats {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.linkedin-stats .stat-item {
+    position: relative;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.linkedin-stats .stat-item:hover {
+    transform: translateY(-2px);
+}
+
+.linkedin-stats .stat-value {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.linkedin-actions {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.linkedin-profile-link {
+    background: linear-gradient(135deg, #0077b5, #00a0dc);
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(0, 119, 181, 0.2);
+}
+
+.linkedin-profile-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 119, 181, 0.3);
+}
+
+/* Light theme adjustments */
+[data-theme="light"] .linkedin-stats {
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+[data-theme="light"] .linkedin-profile-info {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .linkedin-stats .stats {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .linkedin-profile-info {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .linkedin-avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .linkedin-stats .stats {
+        padding: 1rem;
+    }
+}
+
+/* LinkedIn Badge Styles */
+.linkedin-badge-wrapper {
+    margin: 2rem auto;
+    max-width: 600px;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .linkedin-badge-wrapper {
+        margin: 1.5rem;
+        padding: 1rem;
+    }
+    
+    .LI-profile-badge {
+        width: 100% !important;
+    }
+}
+  

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>linkspage</title>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+            "gsap": "https://unpkg.com/gsap@3.12.4/index.js"
+        }
+    }
+    </script>
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+</head>
+<body>
+    <canvas id="bg"></canvas>
+    <div class="star-container" id="starContainer"></div>
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="/" class="nav-logo">
+                <img src="images/profile.jpg" alt="FT" />
+                <span>Fenil Tejani</span>
+            </a>
+            <button class="hamburger" aria-label="Toggle menu">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+            <div class="nav-links" id="nav-menu">
+                <a href="#" class="nav-link active">Home</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <button id="theme-toggle" class="theme-toggle">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+                </svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" />
+                </svg>
+            </button>
+            <a href="mailto:tejanifenil@outlook.com" class="contact-btn">Contact Me</a>
+        </div>
+    </nav>
+    <main>
+        <div class="profile-container">
+            <div class="profile-card">
+                <div class="profile-side profile-front">
+                    <img src="images/avatar.jpg" alt="Profile" style="width: 200px; height: 200px; border-radius: 50%;" />
+                </div>
+                <div class="profile-side profile-back">
+                    <h2>Fenil Tejani</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat-item">
+                <span class="stat-value">0+</span>
+                <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">6+</span>
+                <span class="stat-label">Major Projects</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">2+</span>
+                <span class="stat-label">Contributions</span>
+            </div>
+        </div>
+
+        <div class="leetcode-stats" data-aos="fade-up" data-aos-delay="300">
+            <h2>Data Structures & Algorithms Stats</h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-value">300+</span>
+                    <span class="stat-label">Problems Solved</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">200+</span>
+                    <span class="stat-label">Easy</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">80+</span>
+                    <span class="stat-label">Medium</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">20+</span>
+                    <span class="stat-label">Hard</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="linkedin-badge-wrapper" data-aos="fade-up" data-aos-delay="400">
+            <div class="badge-base LI-profile-badge"
+                data-locale="en_US"
+                data-size="large"
+                data-theme="dark"
+                data-type="HORIZONTAL"
+                data-vanity="feniltejani"
+                data-version="v1">
+                <a class="badge-base__link LI-simple-link" 
+                   href="https://in.linkedin.com/in/feniltejani?trk=profile-badge">
+                </a>
+            </div>
+        </div>
+
+        <div class="links" id="links"></div>
+        <footer>
+            <p>Made by Fenil Tejani</p>
+        </footer>
+    </main>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/star-animation.js"></script>
+    <script type="module" src="js/hamburger.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            mirror: false
+        });
+    </script>
+</body>
+</html> 
